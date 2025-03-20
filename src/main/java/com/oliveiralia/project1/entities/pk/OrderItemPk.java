@@ -1,9 +1,12 @@
 package com.oliveiralia.project1.entities.pk;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.oliveiralia.project1.entities.Order;
+import com.oliveiralia.project1.entities.OrderItem;
 import com.oliveiralia.project1.entities.Product;
 
 import jakarta.persistence.Embeddable;
@@ -37,7 +40,7 @@ public class OrderItemPk implements Serializable{
 
 	public void setProduct(Product product) {
 		this.product = product;
-	}
+	}	
 
 	@Override
 	public int hashCode() {
