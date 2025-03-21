@@ -6,15 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-
 import org.springframework.stereotype.Service;
-
-
 
 import com.oliveiralia.project1.entities.User;
 import com.oliveiralia.project1.repositories.UserRepository;
 import com.oliveiralia.project1.services.exceptions.DatabaseException;
 import com.oliveiralia.project1.services.exceptions.ResourceNotFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UserService {
@@ -42,17 +41,23 @@ public class UserService {
 			throw new ResourceNotFoundException("User not found. Id: " + id);
 		} catch(DataIntegrityViolationException e) {
 			throw new DatabaseException("Integrity violation: cannot delete user with id " + id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException("Erro inesperado: " + e.getClass().getName() + " - " + e.getMessage());
-		}
-		
+		}		
 	}
 	
-	public User update(Long id, User obj) {
+	/*public User update(Long id, User obj) {
 		User entity = repository.getReferenceById(id);
 		updateData(entity, obj);
 		return repository.save(entity);
+	}*/
+	
+	public User update(Long id, User obj) {
+		try {
+			User entity = repository.getReferenceById(id);
+			updateData(entity, obj);
+			return repository.save(entity);			
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("User not found. Id: " + id);
+		}		
 	}
 
 	private void updateData(User entity, User obj) {
