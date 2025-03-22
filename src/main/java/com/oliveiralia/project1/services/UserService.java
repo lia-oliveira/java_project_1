@@ -44,12 +44,6 @@ public class UserService {
 		}		
 	}
 	
-	/*public User update(Long id, User obj) {
-		User entity = repository.getReferenceById(id);
-		updateData(entity, obj);
-		return repository.save(entity);
-	}*/
-	
 	public User update(Long id, User obj) {
 		try {
 			User entity = repository.getReferenceById(id);
