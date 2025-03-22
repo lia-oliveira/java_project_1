@@ -36,7 +36,7 @@ Carga Horária do curso: 54,5 horas.
 # Domínio - Diagrama UML
 Diagrama UML disponibilizado pelo professor Nélio Alves.
 
-![Domínio](src\main\resources\static\img\web-service-dominio-nelio-alves.png)
+![Domínio](src/main/resources/static/img/web-service-dominio-nelio-alves.png)
 
 # Como rodar o projeto
 
